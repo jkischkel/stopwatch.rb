@@ -10,7 +10,6 @@ Simple case:
 
     sw = Stopwatch.new
     sleep(1)
-    sw.stop
     sw.start("testing")
     sw.stop
     
