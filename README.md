@@ -7,17 +7,17 @@ Usage:
 ------
 
 Simple case:
-    ```ruby
+
     sw = Stopwatch.new
     sleep(1)
     sw.start("testing")
     sw.stop
-    ```
+    
     => 1.00 seconds elapsed for testing 
 
 
 Custom result handler:
-  
+
     sw = Stopwatch.new { | time, label | puts "parsing #{ label } took #{ time }s" }
     sw.start("xml")
     # do slooooooow stuff
