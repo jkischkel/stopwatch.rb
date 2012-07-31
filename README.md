@@ -7,12 +7,12 @@ Usage:
 ------
 
 Simple case:
-
+    ```ruby
     sw = Stopwatch.new
     sleep(1)
     sw.start("testing")
     sw.stop
-    
+    ```
     => 1.00 seconds elapsed for testing 
 
 
