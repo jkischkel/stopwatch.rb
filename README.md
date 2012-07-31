@@ -21,7 +21,7 @@ Custom result handler:
     sw = Stopwatch.new { | time, label | puts "parsing #{ label } took #{ time }s" }
     sw.start("xml")
     
-    # do slooooooow stuff
+    // do slooooooow stuff
     sw.stop
     
     => parsing xml took 2.68600010871887s
