@@ -16,15 +16,13 @@ class Stopwatch
   end
 
   def restart(label = nil)
-    ensure_running_state
-
     result = stop
     reset & start(label || @label || '')
     result
   end
 
   def stop
-    ensure_running_state
+    raise "Stopwatch not started!" unless running?
 
     @duration = end_time
     @result_handler.call(@duration, @label)
@@ -40,17 +38,13 @@ class Stopwatch
     !@start_time.nil?
   end
 
-  def self.create_and_start(label = '', &block)
+  def self.create_started(label = '', &block)
     watch = Stopwatch.new(&block)
     watch.start(label)
     watch
   end
 
   private
-
-  def ensure_running_state
-    raise "Stopwatch not started!" unless running?
-  end
 
   def set_start_time
     @start_time = Time.now.to_f
