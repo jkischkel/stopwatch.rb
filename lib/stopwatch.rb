@@ -1,6 +1,6 @@
 class Stopwatch
 
-  DEFAULT_HANDLER = lambda { | time, label | puts "#{ time } seconds elapsed for #{ label }" }
+  DEFAULT_HANDLER = lambda { | time, label | puts "%s: %.6fs" % [label || 'measured', time] }
 
   attr_accessor :label
 
@@ -10,14 +10,14 @@ class Stopwatch
     @result_handler = block_given? ? block : DEFAULT_HANDLER
   end
 
-  def start(label = '')
+  def start(label = nil)
     @label = label
     set_start_time
   end
 
   def restart(label = nil)
     result = stop
-    reset & start(label || @label || '')
+    reset & start(label || @label)
     result
   end
 
@@ -38,7 +38,7 @@ class Stopwatch
     !@start_time.nil?
   end
 
-  def self.create_started(label = '', &block)
+  def self.create_started(label = nil, &block)
     watch = Stopwatch.new(&block)
     watch.start(label)
     watch
