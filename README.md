@@ -14,7 +14,7 @@ Simple case:
     sleep(1)
     sw.stop
     
-    => 1.000000 seconds elapsed for testing 
+    => testing: 1.829139s
 
 
 Custom result handler:
